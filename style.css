@@ -32,8 +32,6 @@ header h1 {
     color: white;
 }
 
-
-
 .info {
     display: flex;
     justify-content: center;
@@ -51,6 +49,8 @@ header h1 {
     height: 15rem;
     padding: 2rem;
     font-size: 2.8rem;
+    font-weight: 500;
+    color: white;
     display: flex;
     justify-content: center;
     justify-self: center;
@@ -58,7 +58,7 @@ header h1 {
     box-shadow: 5px 5px 5px #321a4b;
 }
 
-.pile {
+#pile {
     width: 80%;
     text-align: center;
     display: flex;

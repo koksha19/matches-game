@@ -6,14 +6,19 @@ let computerMatches = 0;
 
 const playerScore = document.getElementById("playerMatches");
 const computerScore = document.getElementById("computerMatches");
+const pile = document.getElementById("pile");
 const move = document.getElementById("move");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const btn3 = document.getElementById("btn3");
 
 const updateState = () => {
-    const pile = document.querySelector('.pile');
     pile.textContent = '🔥'.repeat(matches);
+    if (matches === 0) {
+        const winner = playerMatches % 2 === 0 ? 'YOU' : 'COMPUTER';
+        pile.textContent = `GAME OVER! ${winner} WON!`;
+    }
+
 };
 
 const makeMove = (count) => {
@@ -30,12 +35,18 @@ const makeMove = (count) => {
 };
 
 const computerMove = () => {
-    matches -= 3;
-    computerMatches += 3;
+    const optimalNumber = calculateOptimalNumber();
+    matches -= optimalNumber;
+    computerMatches += optimalNumber;
     computerScore.innerText = 'Computer matches: ' + computerMatches;
     move.innerText = 'Your move!';
     updateState();
-}
+};
+
+const calculateOptimalNumber = () => {
+    const optimalNumber = matches % 4;
+    return optimalNumber === 0 ? 1 : optimalNumber;
+};
 
 const clickButtons = () => {
     btn1.addEventListener("click", () => {
