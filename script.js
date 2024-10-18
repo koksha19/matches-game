@@ -6,6 +6,7 @@ let computerMatches = 0;
 
 const playerScore = document.getElementById("playerMatches");
 const computerScore = document.getElementById("computerMatches");
+const move = document.getElementById("move");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const btn3 = document.getElementById("btn3");
@@ -20,6 +21,7 @@ const makeMove = (count) => {
     matches -= count;
     playerMatches += count;
     playerScore.innerText = 'Player matches: ' + playerMatches;
+    move.innerText = 'Wait for opponent!';
     updateState();
 
     if (matches > 0) {
@@ -31,6 +33,7 @@ const computerMove = () => {
     matches -= 3;
     computerMatches += 3;
     computerScore.innerText = 'Computer matches: ' + computerMatches;
+    move.innerText = 'Your move!';
     updateState();
 }
 

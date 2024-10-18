@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    margin: 3rem;
+    margin: 2.5rem;
     height: 7rem;
     width: 550px;
     display: flex;
@@ -31,6 +31,8 @@ header h1 {
     font-size: 3rem;
     color: white;
 }
+
+
 
 .info {
     display: flex;
@@ -54,7 +56,6 @@ header h1 {
     justify-self: center;
     background: #9b88da;
     box-shadow: 5px 5px 5px #321a4b;
-    border: 2px solid #9f89c4;
 }
 
 .pile {
@@ -65,8 +66,20 @@ header h1 {
     justify-content: center;
 }
 
+h2 {
+    width: 300px;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    background: #9b88da;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: white;
+    justify-self: center;
+    text-align: center;
+    box-shadow: 5px 5px 5px #321a4b;
+}
+
 .buttons {
-    padding: 2rem;
     display: flex;
     justify-content: center;
 }
