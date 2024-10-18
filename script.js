@@ -3,47 +3,75 @@
 let matches = 25;
 let playerMatches = 0;
 let computerMatches = 0;
+let m;
 
 const playerScore = document.getElementById("playerMatches");
 const computerScore = document.getElementById("computerMatches");
 const mainField = document.querySelector(".matches");
 const pile = document.getElementById("pile");
 const move = document.getElementById("move");
-const btn1 = document.getElementById("btn1");
-const btn2 = document.getElementById("btn2");
-const btn3 = document.getElementById("btn3");
 
-const startGame = () => {
+const adjustParameters = () => {
+    const inputs = document.querySelector(".inputs")
+    const nInput = document.getElementById("n");
+    const mInput = document.getElementById("m");
+    const submitBtn = document.getElementById("submit");
+    pile.style.width = "0";
+    move.textContent = "Getting ready!"
+    submitBtn.addEventListener("click", () => {
+        const n = nInput.value;
+        m = mInput.value;
+        matches = 2 * n + 1;
+        inputs.remove();
+        submitBtn.remove();
+        determineFirstMove();
+    });
+};
+
+const determineFirstMove = () => {
     const youButton = createButton("You", "Your move!");
     const computerButton = createButton("Computer", "Wait for opponent!");
     pile.style.width = "0";
 
     youButton.addEventListener("click", () => {
         computerButton.remove();
+        createButtons();
     });
     computerButton.addEventListener("click", () => {
         youButton.remove();
+        createButtons();
         setTimeout(computerMove, Math.random() * 10000);
     });
 
     move.textContent = 'Select the first to move';
-
     mainField.appendChild(youButton);
     mainField.appendChild(computerButton);
-}
+};
 
-const createButton = (buttonText, labelText) => {
+const createButton = (buttonText, labelText, count) => {
     const button = document.createElement("button");
     button.classList.add("button");
     button.innerText = buttonText;
     button.style.alignSelf = "center";
     button.addEventListener("click", () => {
-        move.textContent = labelText;
-        updateState();
-        button.remove();
-        pile.style.width = "80%";
+        if (!count) {
+            move.textContent = labelText;
+            button.remove();
+            updateState();
+            pile.style.width = "80%";
+        } else {
+            makeMove(count);
+        }
     });
     return button;
+};
+
+const createButtons = () => {
+    const buttons = document.querySelector(".buttons");
+    for (let i = 1; i <= m; i++) {
+        const moveButton = createButton(`Take ${i} 🔥`, null, i);
+        buttons.appendChild(moveButton);
+    }
 }
 
 const updateState = () => {
@@ -81,17 +109,4 @@ const calculateOptimalNumber = () => {
     return optimalNumber === 0 ? 1 : optimalNumber;
 };
 
-const clickButtons = () => {
-    btn1.addEventListener("click", () => {
-        makeMove(1);
-    });
-    btn2.addEventListener("click", () => {
-        makeMove(2);
-    });
-    btn3.addEventListener("click", () => {
-        makeMove(3);
-    });
-}
-
-startGame()
-clickButtons();
+adjustParameters();

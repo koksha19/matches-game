@@ -64,6 +64,7 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-self: center;
 }
 
 h2 {
@@ -103,3 +104,24 @@ h2 {
     color: white;
 }
 
+.inputs {
+    display: flex;
+    justify-content: center;
+}
+
+.input-n, .input-m {
+    margin: 2rem;
+    padding: 1rem;
+    width: 30%;
+    align-self: center;
+    flex-direction: column;
+    border: 1px solid #2d233f;
+    box-shadow: 5px 5px 5px #321a4b;
+}
+
+label {
+    font-size: 2rem;
+}
+#submit {
+    align-self: center;
+}
