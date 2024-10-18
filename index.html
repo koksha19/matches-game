@@ -7,18 +7,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <script type="module" src="script.js"></script>
 </head>
 <body>
   <header>
     <h1>Matches Game</h1>
   </header>
+  <div class="info">
+    <p id="playerMatches">Player matches: 0</p>
+    <p id="computerMatches">Computer matches: 0</p>
+  </div>
   <div class="matches">
-    <p id="pile">🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
+    <p class="pile"></p>
   </div>
   <div class="buttons">
-    <button class="button">Take 1 🔥</button>
-    <button class="button">Take 2 🔥🔥</button>
-    <button class="button">Take 3 🔥🔥🔥</button>
+    <button class="button" id="btn1">Take 1 🔥</button>
+    <button class="button" id="btn2">Take 2 🔥🔥</button>
+    <button class="button" id="btn3">Take 3 🔥🔥🔥</button>
   </div>
 </body>
 </html>

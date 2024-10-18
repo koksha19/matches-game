@@ -15,10 +15,12 @@ body {
 header {
     margin: 3rem;
     height: 7rem;
+    width: 550px;
     display: flex;
     justify-content: center;
+    justify-self: center;
     background: #3d2e67;
-    box-shadow: 5px 5px 5px #321a4b;
+    box-shadow: 5px 5px 5px #2d1546;
     border: 2px solid #9b88da;
 }
 
@@ -30,8 +32,21 @@ header h1 {
     color: white;
 }
 
+.info {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 2rem;
+    color: white;
+}
+
+.info p {
+    margin: 1.5rem;
+}
+
 .matches {
-    width: 70%;
+    width: 550px;
+    height: 15rem;
     padding: 2rem;
     font-size: 2.8rem;
     display: flex;
@@ -42,14 +57,16 @@ header h1 {
     border: 2px solid #9f89c4;
 }
 
-.matches p {
-    width: 40%;
+.pile {
+    width: 80%;
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .buttons {
+    padding: 2rem;
     display: flex;
     justify-content: center;
 }
