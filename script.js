@@ -9,7 +9,7 @@ const playerScore = document.getElementById("playerMatches");
 const computerScore = document.getElementById("computerMatches");
 const mainField = document.querySelector(".matches");
 const pile = document.getElementById("pile");
-const move = document.getElementById("move");
+const msg = document.getElementById("msg");
 const buttons = document.querySelector(".buttons");
 
 const adjustParameters = () => {
@@ -18,7 +18,7 @@ const adjustParameters = () => {
     const mInput = document.getElementById("m");
     const submitBtn = document.getElementById("submit");
     pile.style.width = "0";
-    move.textContent = "Getting ready!"
+    msg.textContent = "Getting ready!"
     submitBtn.addEventListener("click", () => {
         const n = nInput.value;
         m = mInput.value;
@@ -48,7 +48,7 @@ const determineFirstMove = () => {
         setTimeout(computerMove, Math.random() * 1000);
     });
 
-    move.textContent = 'Select the first to move';
+    msg.textContent = 'Select the first to move';
     mainField.appendChild(youButton);
     mainField.appendChild(computerButton);
 };
@@ -60,10 +60,11 @@ const createButton = (buttonText, labelText, count) => {
     button.style.alignSelf = "center";
     button.addEventListener("click", () => {
         if (labelText) {
-            move.textContent = labelText;
+            msg.textContent = labelText;
             button.remove();
             updateState();
             pile.style.width = "80%";
+            pile.style.border = "3px solid #8a72db";
         } else if (count) {
             makeMove(count);
         } else {
@@ -103,7 +104,7 @@ const gameOver = () => {
     }
     pile.textContent = `GAME OVER! ${winner} WON!`;
     pile.style.boxShadow = "5px 5px 5px #2d1546";
-    move.textContent = "Wanna play again?";
+    msg.textContent = "Wanna play again?";
 
     for (const child of buttonsArray) {
         console.log(child, buttons.children);
@@ -118,7 +119,7 @@ const makeMove = (count) => {
     matches -= count;
     playerMatches += count;
     playerScore.innerText = 'Player matches: ' + playerMatches;
-    move.innerText = 'Wait for opponent!';
+    msg.innerText = 'Wait for opponent!';
     updateState();
     if (matches > 0) {
         setTimeout(computerMove, Math.random() * 1000);
@@ -130,7 +131,7 @@ const computerMove = () => {
     matches -= optimalNumber;
     computerMatches += optimalNumber;
     computerScore.innerText = 'Computer matches: ' + computerMatches;
-    move.innerText = 'Your move!';
+    msg.innerText = 'Your move!';
     updateState();
 };
 
