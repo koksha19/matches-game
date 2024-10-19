@@ -10,6 +10,7 @@ const computerScore = document.getElementById("computerMatches");
 const mainField = document.querySelector(".matches");
 const pile = document.getElementById("pile");
 const move = document.getElementById("move");
+const buttons = document.querySelectorAll(".buttons .button");
 
 const adjustParameters = () => {
     const inputs = document.querySelector(".inputs")
@@ -76,9 +77,17 @@ const createButtons = () => {
 
 const updateState = () => {
     pile.textContent = '🔥'.repeat(matches);
+    let winner;
     if (matches === 0) {
-        const winner = playerMatches % 2 === 0 ? 'YOU' : 'COMPUTER';
+        if (playerMatches % 2 === 0) {
+            winner = "YOU";
+            pile.style.background = "#d27c28";
+        } else {
+            winner = "COMPUTER";
+            pile.style.background = "#ff0000";
+        }
         pile.textContent = `GAME OVER! ${winner} WON!`;
+        pile.style.boxShadow = "5px 5px 5px #2d1546";
     }
 };
 
@@ -89,7 +98,6 @@ const makeMove = (count) => {
     playerScore.innerText = 'Player matches: ' + playerMatches;
     move.innerText = 'Wait for opponent!';
     updateState();
-
     if (matches > 0) {
         setTimeout(computerMove, Math.random() * 10000);
     }
