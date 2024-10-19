@@ -45,7 +45,7 @@ const determineFirstMove = () => {
     computerButton.addEventListener("click", () => {
         youButton.remove();
         createButtons();
-        setTimeout(computerMove, Math.random() * 1000);
+        setTimeout(computerMove, Math.random() * 3000);
     });
 
     msg.textContent = 'Select the first to move';
@@ -115,14 +115,17 @@ const gameOver = () => {
 }
 
 const makeMove = (count) => {
-    if (matches < count) return;
+    if (matches < count) {
+        alert("Not enough matches in the pile");
+        return;
+    }
     matches -= count;
     playerMatches += count;
     playerScore.innerText = 'Player matches: ' + playerMatches;
     msg.innerText = 'Wait for opponent!';
     updateState();
     if (matches > 0) {
-        setTimeout(computerMove, Math.random() * 1000);
+        setTimeout(computerMove, Math.random() * 3000);
     }
 };
 
@@ -136,7 +139,19 @@ const computerMove = () => {
 };
 
 const calculateOptimalNumber = (m) => {
-    const optimalNumber = matches % (+m + 1);
+    const optimalNumber = matches % +m;
+    if (matches <= +m && matches > 1) {
+        if (computerMatches % 2 === 0) {
+            return matches % 2 === 0 ? matches : (matches - 1);
+        } else if ( computerMatches % 2 !== 0) {
+            return matches % 2 === 0 ? (matches - 1) : matches;
+        }
+    } else if (matches === +m + 1) {
+       if ( computerMatches % 2 !== 0) {
+            return +m;
+       }
+       return 1;
+    }
     return optimalNumber === 0 ? 1 : optimalNumber;
 };
 
