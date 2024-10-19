@@ -22,6 +22,10 @@ const adjustParameters = () => {
     submitBtn.addEventListener("click", () => {
         const n = nInput.value;
         m = mInput.value;
+        if (!n || !m || n <= 0 || m <= 0) {
+            alert("Enter valid n and m");
+            return;
+        }
         matches = 2 * n + 1;
         inputs.remove();
         submitBtn.remove();
@@ -122,7 +126,7 @@ const makeMove = (count) => {
 };
 
 const computerMove = () => {
-    const optimalNumber = calculateOptimalNumber();
+    const optimalNumber = calculateOptimalNumber(m);
     matches -= optimalNumber;
     computerMatches += optimalNumber;
     computerScore.innerText = 'Computer matches: ' + computerMatches;
@@ -130,8 +134,8 @@ const computerMove = () => {
     updateState();
 };
 
-const calculateOptimalNumber = () => {
-    const optimalNumber = matches % 4;
+const calculateOptimalNumber = (m) => {
+    const optimalNumber = matches % (+m + 1);
     return optimalNumber === 0 ? 1 : optimalNumber;
 };
 
